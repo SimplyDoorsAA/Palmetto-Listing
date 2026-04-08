@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8826 Palmetto Falls - Virtual Tour</title>
+    <title>8826 Palmetto Falls - Real Estate Portfolio</title>
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --text-main: #0f172a;
+            --bg-color: #ffffff;
+            --text-main: #1e293b;
             --text-light: #64748b;
-            --header-bg: rgba(255, 255, 255, 0.95);
             --accent: #0f766e;
+            --border-light: #e2e8f0;
         }
 
         * {
@@ -23,23 +23,18 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Hero Video Section */
+        /* Cinematic Hero Section - Bright & Natural */
         .hero {
             position: relative;
-            height: 80vh;
+            height: 75vh;
             width: 100%;
             overflow: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
+            align-items: flex-end;
+            background-color: #f8fafc;
         }
 
         .hero video {
@@ -52,101 +47,107 @@
             height: auto;
             transform: translateX(-50%) translateY(-50%);
             object-fit: cover;
-            opacity: 0.7;
-            pointer-events: none;
+            z-index: 0;
         }
 
-        .hero-overlay {
-            position: relative;
-            z-index: 1;
+        /* Sleek Title Block below the video */
+        .title-block {
             text-align: center;
-            color: white;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            backdrop-filter: blur(4px);
+            padding: 4rem 2rem 2rem 2rem;
+            background-color: var(--bg-color);
         }
 
-        .hero-overlay h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-overlay p {
-            font-size: 1.25rem;
+        .title-block h1 {
+            font-size: 2.5rem;
             font-weight: 300;
-            text-transform: uppercase;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #000;
         }
 
-        /* Container & Sections */
-        .container {
-            max-width: 1400px;
+        .title-block p {
+            font-size: 1rem;
+            color: var(--text-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Filter Navigation */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0 2rem 3rem 2rem;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-main);
+            background-color: #f1f5f9;
+        }
+
+        .filter-btn.active {
+            color: #fff;
+            background-color: var(--text-main);
+        }
+
+        /* Masonry Grid */
+        .gallery-container {
+            max-width: 1600px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px; /* Accounts for sticky header */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
         }
 
-        /* Sticky Section Headers */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            background: var(--header-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 1rem 0;
+        .masonry-item {
+            break-inside: avoid;
             margin-bottom: 1.5rem;
-            z-index: 10;
-            font-size: 1.75rem;
-            font-weight: 600;
-            border-bottom: 1px solid #e2e8f0;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px -6px rgba(0,0,0,0.1);
-        }
-
-        /* CSS Grid for Images */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
+            border-radius: 4px;
             overflow: hidden;
-            border-radius: 8px;
             cursor: pointer;
-            aspect-ratio: 4 / 3;
-            background: #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            background: #f1f5f9;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+        .masonry-item.hidden {
+            display: none;
         }
 
-        .gallery-item img {
+        .masonry-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            display: block;
+            transition: transform 0.6s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .masonry-item:hover img {
+            transform: scale(1.03);
         }
 
-        /* Lightbox (Full Screen Modal) */
+        /* Lightbox Overlay */
         .lightbox {
             display: none;
             position: fixed;
@@ -155,7 +156,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(15, 23, 42, 0.98);
             align-items: center;
             justify-content: center;
             flex-direction: column;
@@ -165,16 +166,15 @@
             max-width: 90%;
             max-height: 85vh;
             object-fit: contain;
-            border-radius: 4px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
             user-select: none;
         }
 
         /* Lightbox Controls */
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 30px;
+            right: 40px;
             color: white;
             font-size: 40px;
             font-weight: 300;
@@ -184,44 +184,49 @@
             z-index: 1001;
         }
 
-        .close-btn:hover { color: #cbd5e1; }
+        .close-btn:hover { color: var(--text-light); }
 
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             color: white;
-            font-size: 50px;
+            font-size: 40px;
             font-weight: 300;
             cursor: pointer;
-            background: rgba(0,0,0,0.3);
+            background: transparent;
             border: none;
-            padding: 20px 15px;
-            transition: background 0.2s;
-            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s;
             z-index: 1001;
         }
 
-        .nav-btn:hover { background: rgba(0,0,0,0.8); }
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
+        .nav-btn:hover { transform: translateY(-50%) scale(1.1); }
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
 
         .lightbox-counter {
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             color: #94a3b8;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            font-size: 0.875rem;
+            letter-spacing: 2px;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .hero-overlay h1 { font-size: 2.25rem; }
-            .hero-overlay p { font-size: 1rem; }
-            .container { padding: 1rem; }
-            .gallery-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .nav-btn { padding: 10px 5px; font-size: 30px; }
-            .close-btn { top: 10px; right: 20px; }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .masonry-grid { column-count: 2; }
+            .hero { height: 60vh; }
+        }
+
+        @media (max-width: 640px) {
+            .masonry-grid { column-count: 1; }
+            .title-block h1 { font-size: 1.75rem; }
+            .filter-nav { padding: 0 1rem 2rem 1rem; }
+            .filter-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
+            .hero { height: 50vh; }
+            .nav-btn { padding: 10px; font-size: 30px; }
+            .close-btn { top: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -231,98 +236,65 @@
         <video autoplay loop muted playsinline>
             <source src="Video_Generation_Walking_Up_To_Door.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay">
-            <h1>8826 Palmetto Falls</h1>
-            <p>San Antonio, TX</p>
-        </div>
     </header>
 
-    <div class="container">
-        
-        <section id="arrival">
-            <h2 class="sticky-header">The Arrival</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="front-entry-1.jpg" alt="Front Entry 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="front-entry-2.jpg" alt="Front Entry 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="front-entry-3.jpg" alt="Front Entry 3" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="front-entry-4.jpg" alt="Front Entry 4" class="lightbox-trigger"></div>
-            </div>
-        </section>
+    <div class="title-block">
+        <h1>8826 Palmetto Falls</h1>
+        <p>San Antonio, TX</p>
+    </div>
 
-        <section id="inside">
-            <h2 class="sticky-header">Stepping Inside</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="entry-1.jpg" alt="Entry 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="entry-2.jpg" alt="Entry 2" class="lightbox-trigger"></div>
-            </div>
-        </section>
+    <nav class="filter-nav" id="filterNav">
+        <button class="filter-btn active" data-filter="all">All Photos</button>
+        <button class="filter-btn" data-filter="exterior">Exterior</button>
+        <button class="filter-btn" data-filter="living">Living & Dining</button>
+        <button class="filter-btn" data-filter="kitchen">Kitchen</button>
+        <button class="filter-btn" data-filter="beds-baths">Beds & Baths</button>
+    </nav>
 
-        <section id="living">
-            <h2 class="sticky-header">Living & Dining</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="living-room-1.jpg" alt="Living Room 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="living-room-2.jpg" alt="Living Room 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="living-room-3.jpg" alt="Living Room 3" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="living-room-4.jpg" alt="Living Room 4" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="living-room-5.jpg" alt="Living Room 5" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="dining-1.jpg" alt="Dining 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="dining-2.jpg" alt="Dining 2" class="lightbox-trigger"></div>
-            </div>
-        </section>
+    <div class="gallery-container">
+        <div class="masonry-grid" id="masonryGrid">
+            
+            <div class="masonry-item exterior"><img src="front-entry-1.jpg" alt="Front Entry"></div>
+            <div class="masonry-item exterior"><img src="front-entry-2.jpg" alt="Front Entry"></div>
+            <div class="masonry-item exterior"><img src="front-entry-3.jpg" alt="Front Entry"></div>
+            <div class="masonry-item exterior"><img src="front-entry-4.jpg" alt="Front Entry"></div>
+            <div class="masonry-item exterior"><img src="entry-1.jpg" alt="Entry"></div>
+            <div class="masonry-item exterior"><img src="entry-2.jpg" alt="Entry"></div>
+            <div class="masonry-item exterior"><img src="patio-1.jpg" alt="Patio"></div>
+            <div class="masonry-item exterior"><img src="patio-2.jpg" alt="Patio"></div>
+            <div class="masonry-item exterior"><img src="back-yard-1.jpg" alt="Backyard"></div>
+            <div class="masonry-item exterior"><img src="back-yard-2.jpg" alt="Backyard"></div>
+            <div class="masonry-item exterior"><img src="back-yard-3.jpg" alt="Backyard"></div>
 
-        <section id="kitchen">
-            <h2 class="sticky-header">The Kitchen</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="kitchen-1.jpg" alt="Kitchen 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="Kitchen-2.jpg" alt="Kitchen 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="kitchen-3.jpg" alt="Kitchen 3" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="kitchen-4.jpg" alt="Kitchen 4" class="lightbox-trigger"></div>
-            </div>
-        </section>
+            <div class="masonry-item living"><img src="living-room-1.jpg" alt="Living Room"></div>
+            <div class="masonry-item living"><img src="living-room-2.jpg" alt="Living Room"></div>
+            <div class="masonry-item living"><img src="living-room-3.jpg" alt="Living Room"></div>
+            <div class="masonry-item living"><img src="living-room-4.jpg" alt="Living Room"></div>
+            <div class="masonry-item living"><img src="living-room-5.jpg" alt="Living Room"></div>
+            <div class="masonry-item living"><img src="dining-1.jpg" alt="Dining Room"></div>
+            <div class="masonry-item living"><img src="dining-2.jpg" alt="Dining Room"></div>
+            <div class="masonry-item living"><img src="playroom-1.jpg" alt="Playroom"></div>
+            <div class="masonry-item living"><img src="playroom-2.jpg" alt="Playroom"></div>
 
-        <section id="primary-suite">
-            <h2 class="sticky-header">The Primary Suite</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="primary-1.jpg" alt="Primary Bedroom 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-2.jpg" alt="Primary Bedroom 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-3.jpg" alt="Primary Bedroom 3" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-4.jpg" alt="Primary Bedroom 4" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-bath-1.jpg" alt="Primary Bath 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-bath-2.jpg" alt="Primary Bath 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="primary-closet.jpg" alt="Primary Closet" class="lightbox-trigger"></div>
-            </div>
-        </section>
+            <div class="masonry-item kitchen"><img src="kitchen-1.jpg" alt="Kitchen"></div>
+            <div class="masonry-item kitchen"><img src="Kitchen-2.jpg" alt="Kitchen"></div>
+            <div class="masonry-item kitchen"><img src="kitchen-3.jpg" alt="Kitchen"></div>
+            <div class="masonry-item kitchen"><img src="kitchen-4.jpg" alt="Kitchen"></div>
 
-        <section id="secondary">
-            <h2 class="sticky-header">Bedrooms & Playroom</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="bed-2.jpg" alt="Bedroom 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="bed-3.jpg" alt="Bedroom 3" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="playroom-1.jpg" alt="Playroom 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="playroom-2.jpg" alt="Playroom 2" class="lightbox-trigger"></div>
-            </div>
-        </section>
-
-        <section id="utilities">
-            <h2 class="sticky-header">Bathrooms & Laundry</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="downstairs-bath.jpg" alt="Downstairs Bath" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="upstairs-bath.jpg" alt="Upstairs Bath" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="laundry.jpg" alt="Laundry Room" class="lightbox-trigger"></div>
-            </div>
-        </section>
-
-        <section id="outdoor">
-            <h2 class="sticky-header">Outdoor Living</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="patio-1.jpg" alt="Patio 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="patio-2.jpg" alt="Patio 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="back-yard-1.jpg" alt="Backyard 1" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="back-yard-2.jpg" alt="Backyard 2" class="lightbox-trigger"></div>
-                <div class="gallery-item"><img src="back-yard-3.jpg" alt="Backyard 3" class="lightbox-trigger"></div>
-            </div>
-        </section>
-
+            <div class="masonry-item beds-baths"><img src="primary-1.jpg" alt="Primary Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-2.jpg" alt="Primary Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-3.jpg" alt="Primary Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-4.jpg" alt="Primary Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-bath-1.jpg" alt="Primary Bathroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-bath-2.jpg" alt="Primary Bathroom"></div>
+            <div class="masonry-item beds-baths"><img src="primary-closet.jpg" alt="Primary Closet"></div>
+            <div class="masonry-item beds-baths"><img src="bed-2.jpg" alt="Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="bed-3.jpg" alt="Bedroom"></div>
+            <div class="masonry-item beds-baths"><img src="downstairs-bath.jpg" alt="Downstairs Bath"></div>
+            <div class="masonry-item beds-baths"><img src="upstairs-bath.jpg" alt="Upstairs Bath"></div>
+            <div class="masonry-item beds-baths"><img src="laundry.jpg" alt="Laundry Room"></div>
+            
+        </div>
     </div>
 
     <div id="lightbox" class="lightbox">
@@ -334,56 +306,89 @@
     </div>
 
     <script>
-        // Lightbox Logic
-        let currentImageIndex = 0;
-        let images = [];
+        // --- Filtering Logic ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const masonryItems = document.querySelectorAll('.masonry-item');
 
-        // Initialize gallery on load
-        window.onload = () => {
-            const imageElements = document.querySelectorAll('.lightbox-trigger');
-            
-            // Build an array of image sources
-            imageElements.forEach((img, index) => {
-                images.push(img.src);
-                // Add click listener to open lightbox
-                img.addEventListener('click', () => openLightbox(index));
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                masonryItems.forEach(item => {
+                    if (filterValue === 'all') {
+                        item.classList.remove('hidden');
+                    } else {
+                        if (item.classList.contains(filterValue)) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    }
+                });
+
+                // Update lightbox images based on the active filter
+                updateVisibleImagesForLightbox();
             });
-        };
+        });
+
+        // --- Lightbox Logic ---
+        let visibleImages = [];
+        let currentLightboxIndex = 0;
+
+        function updateVisibleImagesForLightbox() {
+            // Get only the images that are currently not hidden by the filter
+            const activeElements = document.querySelectorAll('.masonry-item:not(.hidden) img');
+            visibleImages = Array.from(activeElements).map(img => img.src);
+            
+            // Re-bind click events to the visible images
+            activeElements.forEach((img, index) => {
+                img.parentElement.onclick = () => openLightbox(index);
+            });
+        }
 
         function openLightbox(index) {
-            currentImageIndex = index;
-            updateLightboxContent();
+            currentLightboxIndex = index;
+            renderLightboxContent();
             document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden'; // Stop background scroll
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto'; // Restore scroll
         }
 
         function changeImage(direction) {
-            currentImageIndex += direction;
+            currentLightboxIndex += direction;
             
-            // Loop back to start/end
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
+            // Wrap around logic
+            if (currentLightboxIndex >= visibleImages.length) {
+                currentLightboxIndex = 0;
+            } else if (currentLightboxIndex < 0) {
+                currentLightboxIndex = visibleImages.length - 1;
             }
             
-            updateLightboxContent();
+            renderLightboxContent();
         }
 
-        function updateLightboxContent() {
+        function renderLightboxContent() {
             const lightboxImg = document.getElementById('lightbox-main-img');
             const counter = document.getElementById('lightbox-counter');
             
-            lightboxImg.src = images[currentImageIndex];
-            counter.innerText = `${currentImageIndex + 1} / ${images.length}`;
+            lightboxImg.src = visibleImages[currentLightboxIndex];
+            counter.innerText = `${currentLightboxIndex + 1} / ${visibleImages.length}`;
         }
 
-        // Keyboard navigation (Esc to close, Left/Right arrows to navigate)
+        // --- Event Listeners ---
+        // Initialize on load
+        window.onload = updateVisibleImagesForLightbox;
+
+        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.style.display === 'flex') {
@@ -393,7 +398,7 @@
             }
         });
 
-        // Close when clicking outside the image
+        // Close when clicking outside image
         document.getElementById('lightbox').addEventListener('click', (e) => {
             if (e.target.id === 'lightbox') {
                 closeLightbox();
