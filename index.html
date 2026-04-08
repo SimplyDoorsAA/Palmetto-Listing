@@ -73,6 +73,95 @@
             text-transform: uppercase;
         }
 
+        /* Property Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4rem;
+            padding: 2rem;
+            background-color: #f8fafc;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Overview Section */
+        .info-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .description p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .features-list {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+
+        .features-list ul {
+            list-style: none;
+        }
+
+        .features-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-light);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
         /* Filter Navigation */
         .filter-nav {
             display: flex;
@@ -85,6 +174,7 @@
             top: 0;
             z-index: 10;
             border-bottom: 1px solid var(--border-light);
+            padding-top: 2rem;
         }
 
         .filter-btn {
@@ -145,6 +235,89 @@
 
         .masonry-item:hover img {
             transform: scale(1.03);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #f8fafc;
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-card h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .agent-info {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-light);
+        }
+        
+        .agent-info h3 {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            background-color: #f8fafc;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background-color: #fff;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            background: var(--text-main);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--accent);
         }
 
         /* Lightbox Overlay */
@@ -219,14 +392,21 @@
             .hero { height: 60vh; }
         }
 
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .stats-bar { gap: 2rem; }
+            .input-group { flex-direction: column; gap: 0; }
+        }
+
         @media (max-width: 640px) {
             .masonry-grid { column-count: 1; }
             .title-block h1 { font-size: 1.75rem; }
-            .filter-nav { padding: 0 1rem 2rem 1rem; }
+            .filter-nav { padding: 1rem 1rem 2rem 1rem; }
             .filter-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
             .hero { height: 50vh; }
             .nav-btn { padding: 10px; font-size: 30px; }
             .close-btn { top: 20px; right: 20px; }
+            .contact-card { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -241,6 +421,46 @@
     <div class="title-block">
         <h1>8826 Palmetto Falls</h1>
         <p>San Antonio, TX</p>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Bedrooms</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2.5</div>
+            <div class="stat-label">Bathrooms</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2,241</div>
+            <div class="stat-label">Square Feet</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2016</div>
+            <div class="stat-label">Year Built</div>
+        </div>
+    </div>
+
+    <div class="info-container">
+        <h2 class="section-title">Property Overview</h2>
+        <div class="overview-grid">
+            <div class="description">
+                <p>Welcome to this beautifully maintained 3 bedroom, 2.5 bath two-story home that effortlessly blends comfort and convenience. Step inside to an open, light-filled layout with clean finishes throughout.</p>
+                <p>Upstairs, you will find a spacious loft—perfect for a second living area, playroom, or home office setup. The interior has been thoughtfully cared for, providing a bright, modern canvas that is completely move-in ready.</p>
+                <p>The kitchen and living spaces flow seamlessly out to the extended, screened-in deck, giving you the absolute ideal spot for morning coffee, evening dinners, or entertaining guests year-round.</p>
+            </div>
+            <div class="features-list">
+                <ul>
+                    <li><strong>Property Type</strong> <span>Single Family</span></li>
+                    <li><strong>Lot Size</strong> <span>5,227 Sq. Ft.</span></li>
+                    <li><strong>Community</strong> <span>Valley Ranch</span></li>
+                    <li><strong>Garage</strong> <span>2-Car Attached</span></li>
+                    <li><strong>Outdoor Space</strong> <span>Screened Deck</span></li>
+                    <li><strong>Cooling/Heating</strong> <span>Central Air / Gas</span></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <nav class="filter-nav" id="filterNav">
@@ -294,6 +514,29 @@
             <div class="masonry-item beds-baths"><img src="upstairs-bath.jpg" alt="Upstairs Bath"></div>
             <div class="masonry-item beds-baths"><img src="laundry.jpg" alt="Laundry Room"></div>
             
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-card">
+            <h2>Interested in this property?</h2>
+            <div class="agent-info">
+                <h3>Cindy Bachicha</h3>
+                <p>Listing Agent | TREC #612843</p>
+                <p>San Antonio Portfolio KW RE</p>
+                <p style="margin-top: 5px; color: var(--accent);">(210) 218-7681</p>
+            </div>
+            
+            <form action="https://formspree.io/f/xkopeylk" method="POST">
+                <div class="input-group">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="message" rows="4" placeholder="I would like to schedule a tour or learn more about 8826 Palmetto Falls..." required></textarea>
+                <button type="submit">Request Information</button>
+            </form>
         </div>
     </div>
 
