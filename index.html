@@ -3,207 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8826 Palmetto Falls | San Antonio, TX</title>
+    <title>8826 Palmetto Falls | Luxury Real Estate San Antonio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f4f4f4;
+            --accent: #c0a062; /* Subtle gold for a premium feel */
+            --text-main: #4a4a4a;
+        }
+        
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #fcfcfc;
+            color: var(--text-main);
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
         }
-        header {
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #eaeaea;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        h1 {
-            margin: 0;
-            font-size: 28px;
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
             font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 25px 0;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        nav h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('front-exterior.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 56px;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin: 0 0 30px 0;
+            font-weight: 300;
             letter-spacing: 1px;
         }
-        .subtitle {
-            color: #777;
-            font-size: 16px;
-            margin-top: 5px;
+
+        .price-tag {
+            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
+
+        /* Stats Bar */
         .stats-bar {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            background: #fff;
-            padding: 25px 0;
-            border-bottom: 1px solid #eaeaea;
+            flex-wrap: wrap;
+            gap: 60px;
+            background: var(--primary);
+            color: #fff;
+            padding: 35px 20px;
         }
+
         .stat-item {
             text-align: center;
         }
+
         .stat-value {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
         }
+
         .stat-label {
-            font-size: 13px;
-            color: #666;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
+            letter-spacing: 2px;
+            color: #aaa;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 10px;
-            padding: 10px;
-            background: #111;
-        }
-        .gallery img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 2px;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-        .gallery img:hover {
-            opacity: 0.85;
-        }
+
+        /* Main Content Container */
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: 80px auto;
             padding: 0 20px;
-            background: #fcfcfc;
         }
+
         .section-title {
-            font-size: 24px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 400;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
         }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 20px auto 0;
+        }
+
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
         .description {
             line-height: 1.8;
-            color: #444;
-            font-size: 16px;
+            font-size: 17px;
         }
-        .contact-section {
-            background: #fff;
-            padding: 50px 20px;
-            margin-top: 50px;
-            border-top: 1px solid #eaeaea;
+
+        .features-list {
+            background: var(--secondary);
+            padding: 40px;
+            border-radius: 4px;
         }
-        .contact-card {
-            max-width: 450px;
+
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list strong {
+            color: var(--primary);
+        }
+
+        /* Gallery */
+        .gallery-wrapper {
+            background-color: var(--secondary);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 15px;
+            max-width: 1400px;
             margin: 0 auto;
-            text-align: center;
-            padding: 30px;
+            padding: 0 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: brightness(0.95);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: #fff;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background: #fff;
             border: 1px solid #eaeaea;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            text-align: center;
         }
-        .contact-card h2 {
-            margin-top: 0;
-            font-weight: 400;
-        }
+
         .agent-info {
-            font-size: 18px;
-            margin-bottom: 25px;
-            color: #555;
+            margin-bottom: 30px;
         }
+
+        .agent-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+        }
+
+        .agent-info p {
+            margin: 0;
+            color: #777;
+            font-size: 15px;
+        }
+
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
+            text-align: left;
         }
+
+        .input-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
         input, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            background: #fafafa;
             box-sizing: border-box;
             font-family: inherit;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
         }
+
         input:focus, textarea:focus {
             outline: none;
-            border-color: #333;
+            border-color: var(--accent);
+            background: #fff;
         }
+
         button {
-            padding: 15px;
-            background-color: #111;
+            padding: 18px;
+            background-color: var(--primary);
             color: #fff;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.2s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
-            background-color: #333;
+            background-color: var(--accent);
         }
-        @media (max-width: 600px) {
-            .stats-bar {
-                gap: 25px;
-            }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .overview-grid { grid-template-columns: 1fr; gap: 30px; }
+            .input-group { flex-direction: column; gap: 20px; }
+            .gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<header>
+<nav>
+    <h2>Exclusive Listing</h2>
+</nav>
+
+<div class="hero">
+    <div class="price-tag">$325,000</div>
     <h1>8826 Palmetto Falls</h1>
-    <div class="subtitle">San Antonio, TX 78254</div>
-</header>
+    <p>San Antonio, TX 78254</p>
+</div>
 
 <div class="stats-bar">
     <div class="stat-item">
-        <div class="stat-value">--</div>
-        <div class="stat-label">Beds</div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Bedrooms</div>
     </div>
     <div class="stat-item">
-        <div class="stat-value">--</div>
-        <div class="stat-label">Baths</div>
+        <div class="stat-value">2.5</div>
+        <div class="stat-label">Bathrooms</div>
     </div>
     <div class="stat-item">
-        <div class="stat-value">--</div>
-        <div class="stat-label">Sq Ft</div>
+        <div class="stat-value">2,241</div>
+        <div class="stat-label">Square Feet</div>
     </div>
-</div>
-
-<div class="gallery">
-    <img src="front-exterior.jpg" alt="Front Exterior">
-    <img src="living-area.jpg" alt="Living Area">
-    <img src="kitchen.jpg" alt="Kitchen">
-    <img src="primary-suite.jpg" alt="Primary Suite">
-    <img src="primary-bath.jpg" alt="Primary Bath">
-    <img src="backyard.jpg" alt="Backyard Entertaining">
+    <div class="stat-item">
+        <div class="stat-value">2016</div>
+        <div class="stat-label">Year Built</div>
+    </div>
 </div>
 
 <div class="container">
-    <h2 class="section-title">Overview</h2>
-    <div class="description">
-        <p>Welcome to 8826 Palmetto Falls. Step inside to discover a thoughtfully designed and beautifully staged layout that creates an inviting, open atmosphere from the moment you walk through the door.</p>
-        <p>This home features a freshly painted interior, providing a bright, clean, and modern canvas that is completely move-in ready. The flowing floor plan allows for seamless transitions between the living, dining, and kitchen areas, making it an ideal space for both daily comfort and entertaining guests.</p>
-        <p>Enjoy peaceful neighborhood living while remaining conveniently close to the best shopping, dining, and amenities that San Antonio has to offer.</p>
+    <h2 class="section-title">Property Overview</h2>
+    <div class="overview-grid">
+        <div class="description">
+            <p>Welcome to this beautifully maintained 3 bedroom, 2.5 bath two-story home that effortlessly blends comfort and convenience. Step inside to an open, light-filled layout with clean finishes throughout.</p>
+            <p>Upstairs, you will find a spacious loft—perfect for a second living area, playroom, or home office setup. The interior has been thoughtfully cared for, providing a bright, modern canvas that is completely move-in ready.</p>
+            <p>The kitchen and living spaces flow seamlessly out to the extended, screened-in deck, giving you the absolute ideal spot for morning coffee, evening dinners, or entertaining guests year-round.</p>
+        </div>
+        <div class="features-list">
+            <ul>
+                <li><strong>Property Type</strong> <span>Single Family</span></li>
+                <li><strong>Lot Size</strong> <span>5,227 Sq. Ft.</span></li>
+                <li><strong>Community</strong> <span>Valley Ranch</span></li>
+                <li><strong>Garage</strong> <span>2-Car Attached</span></li>
+                <li><strong>Outdoor Space</strong> <span>Screened Deck</span></li>
+                <li><strong>Cooling/Heating</strong> <span>Central Air / Gas</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="gallery-wrapper">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery">
+        <img src="living-area.jpg" alt="Light Filled Living Area">
+        <img src="kitchen.jpg" alt="Kitchen Space">
+        <img src="primary-suite.jpg" alt="Primary Bedroom Suite">
+        <img src="primary-bath.jpg" alt="Primary Bathroom">
+        <img src="backyard.jpg" alt="Extended Screened-in Deck">
+        <img src="front-exterior.jpg" alt="Front Exterior">
     </div>
 </div>
 
 <div class="contact-section">
     <div class="contact-card">
-        <h2>Interested in this property?</h2>
         <div class="agent-info">
-            Listing Agent: <strong>Cindy Bachicha</strong>
+            <h3>Cindy Bachicha</h3>
+            <p>Listing Agent | TREC #612843</p>
+            <p>San Antonio Portfolio KW RE</p>
+            <p style="margin-top: 10px; color: var(--accent);">(210) 218-7681</p>
         </div>
+        
         <form action="/submit-inquiry" method="POST">
-            <input type="text" name="name" placeholder="First & Last Name" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <div class="input-group">
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
+            </div>
             <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
             <textarea name="message" rows="4" placeholder="I would like to schedule a tour or learn more about 8826 Palmetto Falls..." required></textarea>
-            <button type="submit">Send Inquiry</button>
+            <button type="submit">Request Information</button>
         </form>
     </div>
 </div>
