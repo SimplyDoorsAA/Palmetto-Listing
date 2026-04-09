@@ -226,6 +226,7 @@
         .gallery-nav {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 1.5rem;
             margin-bottom: 3rem;
             position: sticky;
@@ -387,6 +388,12 @@
             .full-width { grid-column: auto; }
             button[type="submit"] { grid-column: auto; }
         }
+
+        @media (max-width: 600px) {
+            .masonry { column-count: 1; }
+            .gallery-nav { padding: 1rem; gap: 0.5rem; }
+            .filter-btn { padding: 6px 10px; font-size: 0.65rem; }
+        }
     </style>
 </head>
 <body>
@@ -459,18 +466,45 @@
     </div>
 
     <div class="masonry reveal">
-        <div class="masonry-item exterior"><img src="front-entry-1.jpg" alt="Home Front"></div>
-        <div class="masonry-item exterior"><img src="front-entry-2.jpg" alt="Entry Detail"></div>
-        <div class="masonry-item exterior"><img src="patio-1.jpg" alt="Screened Deck"></div>
-        <div class="masonry-item living"><img src="living-room-1.jpg" alt="Living Space"></div>
-        <div class="masonry-item kitchen"><img src="kitchen-1.jpg" alt="Gourmet Kitchen"></div>
-        <div class="masonry-item beds-baths"><img src="primary-1.jpg" alt="Primary Suite"></div>
+        <div class="masonry-item exterior"><img src="front-entry-1.jpg" alt="Front Entry"></div>
+        <div class="masonry-item exterior"><img src="front-entry-2.jpg" alt="Front Entry"></div>
+        <div class="masonry-item exterior"><img src="front-entry-3.jpg" alt="Front Entry"></div>
+        <div class="masonry-item exterior"><img src="front-entry-4.jpg" alt="Front Entry"></div>
+        <div class="masonry-item exterior"><img src="entry-1.jpg" alt="Entry"></div>
+        <div class="masonry-item exterior"><img src="entry-2.jpg" alt="Entry"></div>
+        <div class="masonry-item exterior"><img src="patio-1.jpg" alt="Patio"></div>
+        <div class="masonry-item exterior"><img src="patio-2.jpg" alt="Patio"></div>
         <div class="masonry-item exterior"><img src="back-yard-1.jpg" alt="Backyard"></div>
-        <div class="masonry-item living"><img src="dining-1.jpg" alt="Dining Area"></div>
-        <div class="masonry-item living"><img src="playroom-2.jpg" alt="Loft Area"></div>
-        <div class="masonry-item kitchen"><img src="Kitchen-2.jpg" alt="Kitchen View"></div>
-        <div class="masonry-item beds-baths"><img src="primary-bath-1.jpg" alt="Bath"></div>
-        <div class="masonry-item beds-baths"><img src="primary-closet.jpg" alt="Walk-in Closet"></div>
+        <div class="masonry-item exterior"><img src="back-yard-2.jpg" alt="Backyard"></div>
+        <div class="masonry-item exterior"><img src="back-yard-3.jpg" alt="Backyard"></div>
+
+        <div class="masonry-item living"><img src="living-room-1.jpg" alt="Living Room"></div>
+        <div class="masonry-item living"><img src="living-room-2.jpg" alt="Living Room"></div>
+        <div class="masonry-item living"><img src="living-room-3.jpg" alt="Living Room"></div>
+        <div class="masonry-item living"><img src="living-room-4.jpg" alt="Living Room"></div>
+        <div class="masonry-item living"><img src="living-room-5.jpg" alt="Living Room"></div>
+        <div class="masonry-item living"><img src="dining-1.jpg" alt="Dining Room"></div>
+        <div class="masonry-item living"><img src="dining-2.jpg" alt="Dining Room"></div>
+        <div class="masonry-item living"><img src="playroom-1.jpg" alt="Playroom"></div>
+        <div class="masonry-item living"><img src="playroom-2.jpg" alt="Playroom"></div>
+
+        <div class="masonry-item kitchen"><img src="kitchen-1.jpg" alt="Kitchen"></div>
+        <div class="masonry-item kitchen"><img src="Kitchen-2.jpg" alt="Kitchen"></div>
+        <div class="masonry-item kitchen"><img src="kitchen-3.jpg" alt="Kitchen"></div>
+        <div class="masonry-item kitchen"><img src="kitchen-4.jpg" alt="Kitchen"></div>
+
+        <div class="masonry-item beds-baths"><img src="primary-1.jpg" alt="Primary Bedroom"></div>
+        <div class="masonry-item beds-baths"><img src="primary-2.jpg" alt="Primary Bedroom"></div>
+        <div class="masonry-item beds-baths"><img src="primary-3.jpg" alt="Primary Bedroom"></div>
+        <div class="masonry-item beds-baths"><img src="primary-4.jpg" alt="Primary Bedroom"></div>
+        <div class="masonry-item beds-baths"><img src="primary-bath-1.jpg" alt="Primary Bath"></div>
+        <div class="masonry-item beds-baths"><img src="primary-bath-2.jpg" alt="Primary Bath"></div>
+        <div class="masonry-item beds-baths"><img src="primary-closet.jpg" alt="Primary Closet"></div>
+        <div class="masonry-item beds-baths"><img src="bed-2.jpg" alt="Bedroom 2"></div>
+        <div class="masonry-item beds-baths"><img src="bed-3.jpg" alt="Bedroom 3"></div>
+        <div class="masonry-item beds-baths"><img src="downstairs-bath.jpg" alt="Downstairs Bath"></div>
+        <div class="masonry-item beds-baths"><img src="upstairs-bath.jpg" alt="Upstairs Bath"></div>
+        <div class="masonry-item beds-baths"><img src="laundry.jpg" alt="Laundry Room"></div>
     </div>
 
     <section class="neighborhood reveal">
@@ -509,7 +543,7 @@
     </footer>
 
     <div id="lightbox" class="lightbox" onclick="closeLB()">
-        <span class="close-lb">&times;</span>
+        <span class="close-lb">×</span>
         <img id="lb-img" src="">
     </div>
 
